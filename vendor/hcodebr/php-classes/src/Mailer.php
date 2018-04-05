@@ -6,7 +6,7 @@ use Rain\Tpl;
 
 class Mailer{
 
-	const USERNAME = "jeannguilherme@gmail.com";
+	const USERNAME = "cursophp7hcode@gmail.com";
 	const PASSWORD = "<?password?>";
 	const NAME_FROM = "Hcode Store";
 
@@ -15,7 +15,7 @@ class Mailer{
 	public function __construct($toAddress, $toName, $subject, $tplName, $data = array()){
 
 		$config = array(
-			"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/views/email",
+			"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/views/email/",
 			"cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
 			"debug"         => false
 		 );
@@ -40,6 +40,13 @@ $this->mail->isSMTP();
 // 1 = client messages
 // 2 = client and server messages
 $this->mail->SMTPDebug = 0;
+$this->mail->SMTPOptions = array(
+    'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+    )
+);
 
 
 $this->mail->Debugoutput = 'html';

@@ -19,7 +19,7 @@ $app->get('/', function(){
 
 });
 
-$app->get('/admin', function(){
+$app->get('/admin/', function(){
 
 	User::verifyLogin();
 
@@ -42,7 +42,7 @@ $app->post('/admin/login', function(){
 
 	User::login($_POST["login"], $_POST["password"]);
 
-	header("Location: /admin");
+	header("Location: /admin/");
 	exit;
 
 });
@@ -162,7 +162,7 @@ $app->post("/admin/forgot", function(){
 
 	$user = User::getForgot($_POST["email"]);
 
-	header("Location: admin/forgot/sent");
+	header("Location: /admin/forgot/sent");
 	exit;
 });
 
