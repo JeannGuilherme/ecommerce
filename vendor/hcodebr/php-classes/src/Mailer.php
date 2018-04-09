@@ -45,8 +45,7 @@ $this->mail->SMTPOptions = array(
         'verify_peer' => false,
         'verify_peer_name' => false,
         'allow_self_signed' => true
-    )
-);
+    ));
 
 
 $this->mail->Debugoutput = 'html';
