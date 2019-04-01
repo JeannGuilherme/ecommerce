@@ -60,7 +60,7 @@ class Address extends Model{
 			'desstate'=>utf8_decode($this->getdesstate()),
 			'descountry'=>utf8_decode($this->getdescountry()),
 			'deszipcode'=>$this->getdeszipcode(),
-			'desdistrict'=>$this->getdesdistrict()
+			'desdistrict'=>utf8_decode($this->getdesdistrict())
 		]);
 
 		if(count($results) > 0){

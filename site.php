@@ -139,8 +139,7 @@ $app->get("/checkout", function(){
 	
 	$cart = Cart::getFromSession();
 
-	if(isset($_GET['zipcode'])){
-
+	if(!isset($_GET['zipcode'])){
 
 		$_GET['zipcode'] = $cart->getdeszipcode();
 	}
@@ -171,12 +170,12 @@ $app->get("/checkout", function(){
 		'cart'=>$cart->getValues(),
 		'address'=>$address->getValues(),
 		'products'=>$cart->getProducts(),
-		'error'=>Address::setMsgError()
+		'error'=>Address::getMsgError()
 	]);
 });
 
 
-$app->post("/checkou", function(){
+$app->post("/checkout", function(){
 
 	User::verifyLogin(false);
 
@@ -264,7 +263,9 @@ $app->get("/logout", function(){
 
 	User::logout();
 
-	Cart::removeSession();
+	Cart::removeFromSession();
+
+	session_regenerate_id();
 
 	header("Location: /login");
 	exit;
